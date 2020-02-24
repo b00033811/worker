@@ -1,0 +1,7 @@
+rq
+redistimeseries
+confuse
+holidays==0.9.12
+pandas
+fbprophet
+

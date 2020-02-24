@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: redis-worker
+  template:
+    metadata:
+      labels:
+        component: redis-worker
+    spec:
+      containers:
+        - name: redis-worker
+          image: localhost:5000/worker:dev
+          ports:
+            - containerPort: 5003
+          env:
+            - name: REDIS_HOST
+              value: "redis-cluster-ip-service"
+            - name: REDIS_PORT
+              value: "6379"
+
